@@ -159,7 +159,7 @@ export default {
       console.log('ports: ', ports)
 
       this.obs = new OBSWebSocket()
-      this.obs.connect({ address: 'localhost:4444', password: 'igoven23' })
+      this.obs.connect({ address: 'localhost:4444', password: 'aaa' })
     },
     async onStartRecording () {
       this.obs.send('StartRecording')
