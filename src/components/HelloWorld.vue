@@ -3,6 +3,7 @@
     <v-row class="text-center">
       <v-col cols="12">
         <v-btn @click="onListPorts">Listar portas</v-btn>
+        <v-btn @click="onStartRecording">Começar Gravação</v-btn>
         <v-img
           :src="require('../assets/logo.svg')"
           class="my-3"
@@ -93,6 +94,8 @@
 </template>
 
 <script>
+import OBSWebSocket from 'obs-websocket-js'
+
 export default {
   name: 'HelloWorld',
 
@@ -146,13 +149,20 @@ export default {
         text: 'Frequently Asked Questions',
         href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'
       }
-    ]
+    ],
+    obs: null
   }),
   methods: {
     async onListPorts () {
       /* eslint-disable-next-line */
       const ports = await serialport.list()
       console.log('ports: ', ports)
+
+      this.obs = new OBSWebSocket()
+      this.obs.connect({ address: 'localhost:4444', password: 'igoven23' })
+    },
+    async onStartRecording () {
+      this.obs.send('StartRecording')
     }
   }
 }

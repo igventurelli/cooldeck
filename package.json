@@ -15,6 +15,7 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",
+    "obs-websocket-js": "^4.0.2",
     "serialport": "^9.0.2",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
