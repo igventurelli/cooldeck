@@ -2,6 +2,7 @@
   <v-container>
     <v-row class="text-center">
       <v-col cols="12">
+        <v-btn @click="onListPorts">Listar portas</v-btn>
         <v-img
           :src="require('../assets/logo.svg')"
           class="my-3"
@@ -146,6 +147,13 @@ export default {
         href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'
       }
     ]
-  })
+  }),
+  methods: {
+    async onListPorts () {
+      /* eslint-disable-next-line */
+      const ports = await serialport.list()
+      console.log('ports: ', ports)
+    }
+  }
 }
 </script>
